@@ -1,7 +1,7 @@
 import css from "./NoteList.module.css";
 import type { Note, NoteId } from "../../types/note";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteNote } from "@/app/lib/api"
+import { deleteNote } from "@/lib/api"
 import Link from "next/link"
 
 interface NoteListProps {
@@ -35,7 +35,7 @@ export default function NoteList({ notes }: NoteListProps) {
                         <span className={css.tag}>{note.tag || "No tag"}</span>
 
                         <Link
-                            href={`/app/notes/${note.id}`}
+                            href={`/notes/${note.id}`}
                             className={css.link}
                             aria-label={`View details of note ${note.title}`}
                         >
