@@ -15,3 +15,4 @@ const NotesLayout = ({ children, sidebar, modal }: NotesLayoutProps) => {
         </section>
     );
 };
+export default NotesLayout; 
