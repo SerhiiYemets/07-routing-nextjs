@@ -14,10 +14,12 @@ export interface NotesResponse {
 export const fetchNotes = async (
     page: number,
     perPage: number,
-    search?: string
+    search?: string,
+    tag?: string 
 ): Promise<NotesResponse> => {
     const params: Record<string, string | number> = { page, perPage };
     if (search) params.search = search;
+    if (tag) params.tag = tag;  
 
     const { data } = await axios.get<NotesResponse>("/notes", { params });
     return data;

@@ -15,25 +15,27 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "NoteHub – personal notes app",
-  description: "NoteHub is a simple and efficient application for managing personal notes. It helps keep your thoughts organized and accessible in one place, with support for keyword search and structured organization.",
-};
-
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+  modal,
+}: {
+  children: React.ReactNode;
+  modal: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-
-        <div id="modal-root"></div>
-
+        
         <TanStackProvider>
           <Header />
-          <main>{children}</main>
+          <main>
+            {children}
+            {modal}
+          </main>
           <Footer />
         </TanStackProvider>
+
+        <div id="modal-root" />
       </body>
     </html>
   );
