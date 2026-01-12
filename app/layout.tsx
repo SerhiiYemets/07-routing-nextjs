@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export default function RootLayout({
-  children,  // ← ONLY children, remove modal
+  children,  
 }: {
-  children: React.ReactNode;  // ← ONLY children type
+  children: React.ReactNode;  
 }) {
   return (
     <html lang="en">
@@ -26,7 +26,6 @@ export default function RootLayout({
           <Header />
           <main>
             {children}
-            {/* ← REMOVE {modal} */}
           </main>
           <Footer />
         </TanStackProvider>
