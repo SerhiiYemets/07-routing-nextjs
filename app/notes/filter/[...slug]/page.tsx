@@ -6,12 +6,12 @@ import { fetchNotes, NotesResponse } from '@/lib/api';
 import { use } from 'react';
 
 interface NotesPageProps {
-    params: Promise<{ tag?: string[] }>;
+    params: Promise<{ slug?: string[] }>;
 }
 
 export default function NotesPage({ params }: NotesPageProps) {
     const resolvedParams = use(params);
-    const tag = resolvedParams.tag?.[0] ?? 'all';
+    const tag = resolvedParams.slug?.[0] ?? 'all';
 
     const { data, isLoading, error } = useQuery<NotesResponse>({
         queryKey: ['notes', tag],
