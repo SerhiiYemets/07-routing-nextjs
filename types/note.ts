@@ -17,3 +17,4 @@ export interface NewNote {
 
 export type NoteId = Note["id"];
 export type Tag = Note["tag"];
+
