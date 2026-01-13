@@ -4,6 +4,7 @@ import Modal from "@/components/Modal/Modal";
 import { fetchNoteById } from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import css from "./NotePreview.module.css";
 
 interface NotePreviewClientProps {
     id: string;
@@ -12,7 +13,7 @@ interface NotePreviewClientProps {
 const NotePreviewClient = ({ id }: NotePreviewClientProps) => {
     const router = useRouter();
     const onClose = () => router.back();
-    
+
     const {
         data: note,
         isLoading,
@@ -24,14 +25,21 @@ const NotePreviewClient = ({ id }: NotePreviewClientProps) => {
     });
 
     if (isLoading) return <p>Loading, please wait...</p>;
-    if (error || !note) return <p>Could not fetch note. {error?.message}</p>;
+    if (error || !note)
+        return <p>Could not fetch note. {error?.message}</p>;
 
     return (
         <Modal onClose={onClose}>
-        <h2>{note.title}</h2>
-        <b>{note.tag}</b>
-        <p>{note.content}</p>
-        <p>{note.updatedAt ?? note.createdAt}</p>
+            <button 
+                className={css.backBtn} 
+                onClick={onClose} 
+                aria-label="Close modal">
+                ← Back
+            </button>
+            <h2>{note.title}</h2>
+            <b>{note.tag}</b>
+            <p>{note.content}</p>
+            <p>{note.updatedAt ?? note.createdAt}</p>
         </Modal>
     );
 };

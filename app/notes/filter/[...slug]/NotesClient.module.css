@@ -7,7 +7,6 @@
     gap: 24px;
 }
 
-/* Верхняя панель */
 .toolbar {
     display: flex;
     align-items: center;
@@ -16,7 +15,6 @@
     flex-wrap: wrap;
 }
 
-/* Кнопка создания заметки */
 .button {
     padding: 10px 16px;
     background-color: #4f46e5;
@@ -37,14 +35,12 @@
     transform: scale(0.97);
 }
 
-/* Основная область */
 .notes-list {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-/* Адаптивность */
 @media (max-width: 640px) {
     .toolbar {
         flex-direction: column;
