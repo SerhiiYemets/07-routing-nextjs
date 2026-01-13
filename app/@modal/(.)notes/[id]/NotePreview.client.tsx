@@ -25,21 +25,26 @@ const NotePreviewClient = ({ id }: NotePreviewClientProps) => {
     });
 
     if (isLoading) return <p>Loading, please wait...</p>;
-    if (error || !note)
-        return <p>Could not fetch note. {error?.message}</p>;
+    
+    if (!note) {
+        const errorMessage =
+            error instanceof Error ? error.message : "Unknown error";
+        return <p>Could not fetch note. {errorMessage}</p>;
+    }
 
     return (
         <Modal onClose={onClose}>
-            <button 
-                className={css.backBtn} 
-                onClick={onClose} 
-                aria-label="Close modal">
+            <button
+                className={css.backBtn}
+                onClick={onClose}
+                aria-label="Close modal"
+            >
                 ← Back
             </button>
             <h2>{note.title}</h2>
             <b>{note.tag}</b>
             <p>{note.content}</p>
-            <p>{note.updatedAt ?? note.createdAt}</p>
+            <p>{note.createdAt}</p>
         </Modal>
     );
 };
